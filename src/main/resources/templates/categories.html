@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Kategorien</title>
+</head>
+<body>
+<div class="container">
+  <div class="todo-app">
+    <div class="todo-header">
+      <div class="todo-img">
+        <img th:src="@{/img/to-do-list.png}"alt="todo">
+      </div>
+      <div class="todo-title">
+        <h1>Todo - App</h1>
+      </div>
+    </div>
+    <div class="todo-addon">
+      <div class="todo-add">
+        <a class="add-action" href="/add-category">Add Kategorien</a>
+      </div>
+      <div class="todo-add">
+        <a class="cat-action" href="/list-todos">Zu Liste</a>
+      </div>
+    </div>
+    <h2>Kategorien</h2>
+    <div class="todo-content">
+      <table class="content-table">
+        <thead>
+        <tr>
+          <th>Usage</th>
+          <th>Color</th>
+          <th>Categories</th>
+          <th>Löschen</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:object="${categories}" th:each="category : ${categories}">
+          <td><span th:text="${todoCountsByCategory[category.categoryName]}" class="usage"></span></td>
+          <td th:style="'background-color: ' + ${category.categoryColor} + ';'" th:text="${category.categoryColor}">Schule</td>
+          <td th:text="${category.categoryName}">Schule</td>
+          <td th:if="${todoCountsByCategory[category.categoryName] < 1}" ><a class="action" th:href="@{categories/delete/{id}(id=${category.id})}"> <img class="ui-action" th:src="@{/img/recycle-bin.png}"alt="delete"></a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

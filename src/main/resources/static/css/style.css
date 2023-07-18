@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+select{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    color: #555;
+    background-color: #edeef0;
+    background-image: none;
+    border: none;
+    padding: 10px;
+}
+select>option{
+    color: #555;
+    background-color: rgb(247, 247, 247);
+    background-image: none;
+    height: 50px;
+    padding: 15px;
+    border: 1px solid rgb(41, 18, 18);
+    text-transform: uppercase;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #153677, #4e085f);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-app {
+    width: 100%;
+    max-width: 720px;
+    padding: 40px 30px 40px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.todo-title h1 {
+    color: #1e0824;
+}
+
+.todo-content {
+    overflow: hidden;
+}
+
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 25px;
+}
+
+.todo-img {
+    height: auto;
+    width: 150px;
+}
+
+.todo-img img {
+    width: 100%;
+}
+
+.todo-content, .todo-btn-wrapper, .todo-footer {
+    margin-top: 15px;
+}
+
+.todo-label {
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.todo-input {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background-color: #edeef0;
+}
+
+.todo-btn-wrapper {
+    display: block;
+}
+
+.todo-btn-wrapper:first-child {
+    margin-right: 8px;
+}
+
+.todo-footer {
+    display: flex;
+}
+
+.todo-footer img {
+    height: 20px;
+    padding-left: 10px;
+}
+
+
+.save-btn {
+    background-color: #f79235;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    border-color: #f79235;
+    cursor: pointer;
+}
+
+.back-btn {
+    background-color:  #1e0824;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.todo-addon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.todo-add {
+    display: flex;
+    align-items: center;
+    gap: 25px
+}
+
+.todo-add a img {
+    width: 28px;
+}
+
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+}
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    width: 100%;
+}
+
+
+.content-table thead tr {
+    background-color: #edeef0;
+    text-align: left;
+}
+
+.content-table th, .content-table td {
+    padding: 12px 15px;
+}
+
+
+
+@media(max-width: 720px) {
+    .content-table thead {
+        display: none;
+    }
+
+    .content-table th, .content-table td {
+        padding: unset;
+    }
+
+}
+
+th a {
+    text-decoration: none;
+    color: black;
+}
+
+th a:hover {
+    color: darkgray;
+}
+
+.ui-action {
+    width: 20px;
+}
+
+.action {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+
+.add-action {
+    background: lightgreen;
+    padding: 7px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #070707;
+}
+
+.add-action.list {
+    background-color: #4e085f;
+    color: white;
+}
+
+.cat-action {
+    background: lightseagreen;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    color: white;
+}
+
+.sort-action a {
+    background-color: darkorange;
+    text-decoration: none;
+    font-weight: 700;
+    color: white;
+    display: inline;
+    padding: 5px 8px;
+    border-radius: 10px;
+}
+
+.active {
+    color: darkorange;
+}
+
+.checkbox-f{
+    height: 25px;
+    width: 25px;
+    border: 3px solid #02bc7d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkmark-icon {
+    width: 28px;
+    height: 27px;
+    transform: translateY(3px);
+}
+
+.usage {
+    background-color: #1c1c1c;
+    color: white;
+    height: 25px;
+    width: 25px;
+    display: inline-flex;
+    justify-content: center;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.free-todo {
+    width: 420px;
+}
+

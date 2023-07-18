@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Document</title>
+</head>
+<body>
+<div class="container">
+  <div class="todo-app">
+    <div class="todo-header">
+      <div class="todo-img">
+        <img th:src="@{/img/to-do-list.png}"alt="todo">
+      </div>
+      <div class="todo-title">
+        <h1>Todo - App</h1>
+      </div>
+    </div>
+    <div class="todo-addon">
+      <div class="todo-add">
+        <a class="add-action" href="/">Add Todo</a>
+        <a class="add-action list" href="/list-todos">Todo List</a>
+        <a href="/done"> <img th:src="@{/img/list.png}"alt="todo"></a>
+      </div>
+
+      <div class="todo-add">
+        <a class="cat-action" href="/categories">Zu den Kategorien</a>
+      </div>
+    </div>
+    <h2><p th:text="'Du hast noch ' + ${todos.size()}  + ' Todos zu erledigen?'"></p></h2>
+
+    <div class="sort-action" th:if="${sortCatEnabled}">
+      <a href="/list-todos">Sortierung zurücksetzen</a>
+    </div>
+    <div class="sort-action" th:if="${sortDateEnabled}">
+      <a href="/list-todos">Sortierung zurücksetzen</a>
+    </div>
+
+    <div class="sort-action" th:if="${sortPrioEnabled}">
+      <a href="/list-todos">Sortierung zurücksetzen</a>
+    </div>
+
+    <div class="todo-content">
+      <table class="content-table">
+        <thead>
+        <tr>
+          <th></th>
+          <th>Text</th>
+          <th><a th:class="${sortDateEnabled} ? 'active' : ''" href="/sort/date">Datum</a></th>
+          <th><a th:class="${sortCatEnabled} ? 'active' : ''" href="/sort/category">Kategorie</a></th>
+          <th><a th:class="${sortPrioEnabled} ? 'active' : ''" href="/sort/prio">Priorität</a></th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr th:object="${todos}" th:each="todo : ${todos}">
+            <td><a th:href="@{/update-status/{id}(id=${todo.id})}" class="checkbox-f">
+              <div class="sort-action" th:if="${todo.done}">
+                <img class="checkmark-icon" th:src="@{/img/checkmark.png}"alt="todo">
+              </div>
+            </a></td>
+            <td th:text="${todo.text}"></td>
+            <td th:text="${todo.dueDate}">21.12.2023</td>
+            <td th:style="'background-color: ' + ${todo.categoryColor} + ';'" th:text="${todo.categoryName}">Schule</td>
+            <td th:text="${todo.priority}">Prio 1</td>
+            <td><a class="action"  th:href="@{/update/{id}(id=${todo.id})}" ><img class="ui-action" th:src="@{/img/edit.png}"></a></td>
+            <td th:if="${!todo.done}"><a class="action" th:href="@{/delete/{id}(id=${todo.id})}"> <img class="ui-action" th:src="@{/img/recycle-bin.png}"alt="delete"></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

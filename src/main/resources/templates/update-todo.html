@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de-ch"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Todo-Update</title>
+</head>
+<body>
+<div class="container">
+  <div class="todo-app">
+    <div class="todo-header">
+      <div class="todo-img">
+        <img th:src="@{/img/to-do-list.png}"alt="todo">
+      </div>
+      <div class="todo-title">
+        <h1>Todo - Update</h1>
+      </div>
+    </div>
+    <h2 th:text="'Ändere Todo mit ID '+ ${todo.id}"></h2>
+    <form th:action="@{/updateTodo/{id}(id=${todo.id})}" th:object="${todo}" th:method="POST" >
+      <div class="todo-content">
+        <label class="todo-label">Todo:</label>
+        <input th:field="*{text}" class="todo-input" placeholder="Was hast du zum erledigen" type="text">
+      </div>
+      <div class="todo-content">
+        <label class="todo-label" for="todo-date">Bis wann musst du dass erledigt haben:</label>
+        <input  th:value="*{dueDate}" class="todo-input" name="todoDate" placeholder="Datum" type="date" id="todo-date">
+      </div>
+      <div class="todo-content">
+        <label class="todo-label" for="todo-date">Priorität:</label>
+        <select th:field="*{priority}" th:value="${todo.priority}" id="priority">
+          <option th:each="i : ${#numbers.sequence(1,5)}"  th:value="${i}" th:text="'Priorität_'+ ${i}"
+                  th:selected="${i==75}"></option>
+        </select>
+      </div>
+      <div class="todo-content">
+        <label class="todo-label" >Kategorie:</label>
+        <select   th:style="'background-color: ' + ${todo.categoryColor} + '; color: white;'" th:field="*{category}">
+          <option th:each="category : ${categories}" th:selected="${todo.getCategoryName()}" th:value="${category.getId()}" th:text="${category.getCategoryName()}"></option>
+        </select>
+      </div>
+      <div class="todo-footer">
+        <div class="todo-btn-wrapper">
+          <button type="submit" class="save-btn">Todo Updatem <img th:src="@{/img/diskette.png}"alt=""></button>
+        </div>
+        <div class="todo-btn-wrapper">
+          <a href="/list-todos" class="back-btn">zur Liste   <img  th:src="@{/img/back-arrow.png}" alt=""></a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
